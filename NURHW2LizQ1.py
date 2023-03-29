@@ -281,7 +281,7 @@ def Quicksort(arr, indxsave=False):
 	#copying the array and saving the indices & middle incdex
 	a = arr.copy()
 	N = len(arr)
-	middle = int(N*0.5
+	middle = int(N*0.5)
 	#make an indxs array in case we want to shuffle an array
 	indxes = np.arange(0,N,1, dtype=int)
 
