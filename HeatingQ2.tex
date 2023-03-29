@@ -1,4 +1,4 @@
-\section{Satellite galaxies around a massive central}
+\section{Heating and cooling in HII regions}
 
 In this section we look at question 1 of the second hand-in. 
 I have mostly copy-pasted my functions from the tutorials, where I worked together with my sister,
@@ -7,4 +7,26 @@ Evelyn van der Kamp (s2138085), so some of our functions are quite similar.
 \lstinputlisting{NURHW2LizQ2.py}
 
 \subsection{Question 2a}
+
+For this question it was asked to find the equilibrium temperature, where the heating and cooling are equal to each other.
+We do this by equating the heating and cooling equations and solving for the root of the function.
+To do this, I imported three root finding functions: Secant, False position, and Newton Rapson.
+These three function work in similar ways: first they initialize some values, the initial guess based on their respective methods, the initial error based on the function value at the initial guess, the initial number of iterations, and if needed, the initial interval size.
+Then they iterate to find the next guess for the root until either the maximum iterations is reached or until the target error is reached. 
+
+In this case, I have found the Secant method to diverge every time, so I proceeded with False position and Newton Rapson. 
+I took a target accuracy of $10^{-18}$ and a maximum amount of iterations of 30, and for Newton Rapson, I created a function for the analytical derivative of the equilibrium equation, and took an initial guess of $T = 10^{3.5}$.
+
+Newton Rapson converged fastest, after 3 iterations, while False position took 9 iterations to find a root. 
+The results can be seen here:
+
+\lstinputlisting{Timesoutput2a.txt}
+
+The first two numbers correspond to the time in seconds it took to find the root for False position and NR respectively, the second pair of numbers are the equilibrium temperatures found by the algorithms for False position and NR respectively, and the third pair of numbers are the function values at these equilibrium temperatures.
+
+I have also 
+
+
+
+
 
