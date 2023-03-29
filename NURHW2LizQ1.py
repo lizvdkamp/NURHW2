@@ -82,6 +82,8 @@ print("The result for A = ", A_int)
 # Save a text file
 np.savetxt('Integrationoutput.txt',[A_int])
 
+
+#-------
 #1b
 
 #Assuming that N(x)dx = x**2*n(x)dx, such that the integral from 0 to x_max over N(x)dx/<Nsat> = 1, just like a probability distribution should do
@@ -175,6 +177,8 @@ plt.legend()
 plt.savefig('Probabilityplot.png')
 plt.close()
 
+
+#-------
 
 #1c
 
@@ -356,6 +360,7 @@ plt.close()
 
 #print(x_shuffle, x_shuffle.size)
 
+#-------
 
 #1d
 

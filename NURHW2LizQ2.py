@@ -143,7 +143,7 @@ print("Time taken to calculate the equilibrium Temperature with Newton Rapson:",
 print("Root:", eqT2, "Function value:", equilibrium1(eqT2))
 
 # Save a text file with the times
-np.savetxt('Timesoutput2a.txt',np.transpose([end,end2]))
+np.savetxt('Timesoutput2a.txt',np.transpose([end,end2,eqT,eqT2,equilibrium1(eqT), equilibrium1(eqT2)]))
 
 #The Newton Rapson method converges fastest
 
@@ -160,6 +160,7 @@ plt.legend()
 plt.savefig('Temperatureplot2a.png')
 plt.close()
 
+#-------
 
 #2b
 
@@ -231,6 +232,8 @@ maxit = 60
 
 #An empty list to save the times it takes to calculate this
 times = []
+eqTs = []
+fs = []
 
 for i in range(len(nes)):
 	nH = nes[i]
@@ -245,6 +248,8 @@ for i in range(len(nes)):
 		print("Time taken to calculate the equilibrium Temperature with False position:", end, "s")
 		print("Root:", eqT, "Function value:", equilibrium2(eqT))
 		times.append(end)
+		eqTs.append(eqT)
+		fs.append(equilibrium2(eqT))
 
 
 	else:
@@ -256,10 +261,12 @@ for i in range(len(nes)):
 		print("Time taken to calculate the equilibrium Temperature with Bisection:", end2, "s")
 		print("Root:", eqT2, "Function value:", equilibrium2(eqT2))
 		times.append(end2)
+		eqTs.append(eqT2)
+		fs.append(equilibrium2(eqT2))
 
 #print(times)
 # Save a text file
-np.savetxt('Timesoutput2b.txt',np.transpose([times[0],times[1],times[2]]))
+np.savetxt('Timesoutput2b.txt',np.transpose([times[0],times[1],times[2],eqTs[0],eqTs[1],eqTs[2],fs[0],fs[1],fs[2]]))
 
 
 
