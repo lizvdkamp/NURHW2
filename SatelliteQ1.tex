@@ -29,14 +29,15 @@ If $y \geq p(x)$ then we reject it, otherwise we accept it into the sample.
 
 I then create some arrays to plot a log-log plot of $N(x)$ and the histogram, with 20 logarithmically spaced bins.
 For the histogram I used \texttt{plt.hist}, and by taking \texttt{density = True} we divide the bins by their width and divide by the number of counts.
-The plot generated can bee seen in Figure \ref{fig:px}, where it can be seen that the histogram and the curve agree well with each other.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
   \centering
   \includegraphics[width=0.9\linewidth]{Probabilityplot.png}
   \caption{A plot of $x$ versus $p(x)$d$x = N(x)$d$x/<N_{sat}>$, showing $N(x)$ as the black curve and my sampled distribution as a histogram. These both agree quite well with each other.}
   \label{fig:px}
 \end{figure}
+
+The plot generated can bee seen in Figure \ref{fig:px}, where it can be seen that the histogram and the curve agree well with each other.
 
 
 \subsection{Question 1c}
@@ -52,15 +53,14 @@ Then I took the first 100 positions from that shuffled array to get 100 random s
 Afterwards, I sorted those 100 positions with my Quicksort function from smallest to largest radius.
 The number of galaxies within a radius is now equal to 0 at $x = 10^{-4}$ and 100 at $x_{max}$, and it is equal to the one plus the index of the sorted array at the radius that corresponds to the index.
 
-The plot generated can bee seen in Figure \ref{fig:Nr}, where it can be seen that the histogram and the curve agree well with each other.
-
-\begin{figure}[h!]
+\begin{figure}[ht!]
   \centering
   \includegraphics[width=0.9\linewidth]{Numberplot.png}
   \caption{A plot of $x$ versus the number of galaxies within that radius. It steadily goes up until it goes flat around $x = 0.8$.}
   \label{fig:Nr}
 \end{figure}
 
+The plot generated can bee seen in Figure \ref{fig:Nr}, where it can be seen that the histogram and the curve agree well with each other.
 
 
 \subsection{Question 1d}
