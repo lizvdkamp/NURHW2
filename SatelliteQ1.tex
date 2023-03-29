@@ -8,7 +8,7 @@ Evelyn van der Kamp (s2138085), so some of our functions are quite similar.
 
 \subsection{Question 1a}
 
-In this part I rewrote the integration over d$V$ as an integral over $x^2$d$x$d$\theta$d$phi = 4\pi x^2$d$x$, since $n(x)$ does not depend on $\theta$ or $\phi$. 
+In this part I rewrote the integration over d$V$ as an integral over $x^2$d$x$d$\theta$d$\phi = 4\pi x^2$d$x$, since $n(x)$ does not depend on $\theta$ or $\phi$. 
 I created two functions to numerically integrate this, one which calculates the trapezoidal area below a given function on a given interval, with a given stepsize $h$, and one which calls this trapezoid function to do Romberg integration, where we iterate over the different solutions from trapezoidal integration with different stepsizes.
 Integrating $n(x)/A x^2$d$x$ from $x = 0$ to $x_{max} = 5$ gives $<N_{sat}>/A$, so to get $A$, I divide $<N_{sat}> = 100$ by the solution from integrating. 
 
