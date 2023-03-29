@@ -24,7 +24,33 @@ The results can be seen here:
 
 The first two numbers correspond to the time in seconds it took to find the root for False position and NR respectively, the second pair of numbers are the equilibrium temperatures found by the algorithms for False position and NR respectively, and the third pair of numbers are the function values at these equilibrium temperatures.
 
-I have also 
+I have also created a plot to show the roots found by these two algorithms, which is Figure \ref{fig:Temp}.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.9\linewidth]{Temperatureplot2a.png}
+  \caption{A plot of Temperature versus the value of the equilibrium equation. The blue curve shows the curve of the function, the orange curve is a line at 0, and the two points show the position of the roots found by Newton Rapson and False position.}
+  \label{fig:Temp}
+\end{figure}
+
+\subsection{Question 2b}
+
+For this part of the question we considered a more realistic configuration with additional cooling and heating mechanisms taken into account.
+We had to determine the equilibrium temperature for a low, intermediate and high density gas. 
+For this part I imported my root finding function which uses bisection to find the root, since I found the other methods to not be stable enough for the low density gas.
+The low density gas curve shows a more obvious maximum before it drops down to negative values at high temperatures, but the intermediate and high density gas curves steadily decline, and are only positive at very low temperatures.
+This made it difficult to find the root, since the function values are very close to zero over a big range of temperatures.
+
+For the low density gas case I used bisection and for the other two I used False position to calculate a root, again with a target accuracy of $10^{-18}$, and now with a maximum number of iterations of 60.
+Bisection took 11 iterations to converge, while False position takes 0 iterations to converge.
+
+The results can be seen here:
+
+\lstinputlisting{Timesoutput2b.txt}
+
+The first three numbers are the times it took (in seconds) to converge for the low (bisection), intermediate (FP) and high (FP) density cases, while the second three numbers are the equilibrium temperatures found, and the third three numbers are the function values at these equilibrium temperatures.
+
+
 
 
 
