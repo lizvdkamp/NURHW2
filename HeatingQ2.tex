@@ -15,9 +15,10 @@ These three function work in similar ways: first they initialize some values, th
 Then they iterate to find the next guess for the root until either the maximum iterations is reached or until the target error is reached. 
 
 In this case, I have found the Secant method to diverge every time, so I proceeded with False position and Newton Rapson. 
+False position uses the same method as Secant, but it checks which interval contains the root as a safeguard against diverging. 
 I took a target accuracy of $10^{-18}$ and a maximum amount of iterations of 30, and for Newton Rapson, I created a function for the analytical derivative of the equilibrium equation, and took an initial guess of $T = 10^{3.5}$.
 
-Newton Rapson converged fastest, after 3 iterations, while False position took 9 iterations to find a root. 
+Newton Rapson converged fastest, after 3 iterations with the help of the slope at the mid-point of the function, while False position took 9 iterations to find a root. 
 The results can be seen here:
 
 \lstinputlisting{Timesoutput2a.txt}
@@ -39,7 +40,7 @@ For this part of the question we considered a more realistic configuration with 
 We had to determine the equilibrium temperature for a low, intermediate and high density gas. 
 For this part I imported my root finding function which uses bisection to find the root, since I found the other methods to not be stable enough for the low density gas.
 The low density gas curve shows a more obvious maximum before it drops down to negative values at high temperatures, but the intermediate and high density gas curves steadily decline, and are only positive at very low temperatures.
-This made it difficult to find the root, since the function values are very close to zero over a big range of temperatures.
+This made it difficult to find the root, since the function values are very close to zero over a big range of temperatures, and the slope is very shallow in most of the range of the functions, so Newton Rapson can jump around a lot or diverge easily.
 
 For the low density gas case I used bisection and for the other two I used False position to calculate a root, again with a target accuracy of $10^{-18}$, and now with a maximum number of iterations of 60.
 Bisection took 11 iterations to converge, while False position takes 0 iterations to converge.
