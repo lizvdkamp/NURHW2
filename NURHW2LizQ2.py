@@ -75,9 +75,9 @@ def Falsepos(func, a, b, acc, maxit):
             intsize = np.abs(b-a)
             it +=1
 
-        #If there is no root, we terminate
+        #If there is no bracket, we terminate
         else:
-            print("Whoops we lost the root")
+            print("We lost the root")
             return None
             
         #print(a,b,intsize,it)
@@ -199,8 +199,8 @@ def basicroot(func, a, b, acc, maxit):
             intsize = np.abs(b-a)
             it +=1
             
-        else:
-            print("Whoops we lost the root")
+        else:	#If there is no bracket we terminate
+            print("We lost the root")
             return None
             
         #print(a,b,intsize,it)

@@ -29,7 +29,7 @@ def Romberg(a,b,N,m,func):
 	r[0] = trapezoid(a,b,N,func)
 	Np = N
 
-	#First loop
+	#First loop where we iterate over different stepsizes
 	for i in range(1,m):
 		r[i] = 0
 		delta = h
@@ -98,6 +98,8 @@ def Nxdx(x,a=2.4,b=0.25,c=1.6,Nsat=100,A=A_int):
 
 def lcgbit(i0, size, a=1664525, m=2**32, c=1013904223, norm=True, a1=21,a2=25,a3=4):
     """Takes a seed i0 and generates 'size' amount of random numbers, by combining 64-bit XOR and an LCG. If norm=True, then it returns a random uniform distribution between 0 and 1."""
+
+    #Initialize arrays to fill
     randnrs = np.zeros(size, dtype=int)
     xors = np.zeros(size+1, dtype=int)
     xors[0] = int(i0)
@@ -115,10 +117,11 @@ def lcgbit(i0, size, a=1664525, m=2**32, c=1013904223, norm=True, a1=21,a2=25,a3
     #Here we do the LCG
     for j in range(0,size):
         ii = (a*xors[j+1]+c)%m
-        randnrs[j] = ii
+        randnrs[j] = ii	#add the random number to the array
         #print("ii", ii)
         
     if norm:
+        #Return a normalized array
         return randnrs/np.amax(randnrs)
     else:
         return randnrs
@@ -140,8 +143,8 @@ def Rejsamp(N, a, b, px):
 	
 	while j < N:
 		rands = lcgbit(k+1,size=100) #U(0,1)
-		x = a+(b-a)*rands[0] #U(a,b)
-		y = maxp*rands[1] #U(0,max(p(x)))
+		x = a+(b-a)*rands[0] #1 number from U(a,b)
+		y = maxp*rands[1] #1 number from U(0,max(p(x)))
 		#print("x, y =", x,y)
 		
 		if y <= px(x):
@@ -151,7 +154,7 @@ def Rejsamp(N, a, b, px):
 			j += 1
 			k += 1
 		else:
-			#reject
+			#reject, try a different seed for the random number generator
 			k += 1
 
 	return x_sample
@@ -393,7 +396,8 @@ def Ridder(h,x,func,error,analder,m=100):
 		Np *= d**2
 
 		#Keep track of the error between our best guess and the analytical derivative to make sure that it doesn't grow
-		errsolprev = np.mean(np.abs(r[0,:]-analder(x))) #Error on previos guess
+		errsolprev = np.mean(np.abs(r[0,:]-analder(x))) #Error on previous guess
+		solprev = r[0,:].copy()	#Saving the previous guess in case the error grows
 		for j in range(0, m-i):
 			r[j,:] = (Np*r[j+1,:]-r[j,:])/(Np-1)
         
@@ -401,7 +405,7 @@ def Ridder(h,x,func,error,analder,m=100):
 		#Check if the error grows
 		if errsolprev < errsol:
 			print("error grows", errsol)
-			return r[0,:]
+			return solprev
 		if errsol < error:
 			#print(i, errsol)
 			return r[0,:]
